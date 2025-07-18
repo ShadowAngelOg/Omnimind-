@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- This meta tag tries to prevent caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OmniMind</title>
+    
+    <!-- All styling and code is now inside this one file -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* All our styles are right here */
+        body { font-family: 'Inter', sans-serif; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #1a1a2e; }
+        ::-webkit-scrollbar-thumb { background: #4a4a6a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6a6a8a; }
+        .header-glow { text-shadow: 0 0 8px rgba(0, 191, 255, 0.5), 0 0 16px rgba(0, 191, 255, 0.3); }
+    </style>
+</head>
+<body class="bg-[#0a0a1a] text-gray-200 flex flex-col h-screen">
+
+    <header class="bg-[#101024] p-4 border-b border-gray-700 shadow-lg">
+        <h1 class="text-2xl font-bold text-center text-deepskyblue header-glow">OmniMind</h1>
+        <p class="text-center text-xs text-gray-400">Your Personal AI Homie // Built by Shadow</p>
+    </header>
+
+    <main id="chat-window" class="flex-1 p-4 overflow-y-auto">
+        <div class="space-y-4">
+            <div class="flex items-start gap-3">
+                <div class="w-8 h-8 rounded-full bg-deepskyblue flex items-center justify-center font-bold text-black text-sm">O</div>
+                <div class="bg-[#1a1a2e] p-3 rounded-lg max-w-lg">
+                    <p class="text-sm">Yo, Shadow. Scorched earth protocol. One file. No server. Let's see if this works.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-[#101024] p-4 border-t border-gray-700">
+        <div class="flex items-center gap-3">
+            <input id="message-input" type="text" placeholder="Type your message here..." class="flex-1 bg-[#1a1a2e] border border-gray-600 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-deepskyblue transition">
+            <button id="send-button" class="bg-deepskyblue text-black font-bold py-3 px-5 rounded-lg hover:bg-sky-400 transition-colors shadow-md">Send</button>
+        </div>
+    </footer>
+    
+    <!-- All our JavaScript is right here -->
+    <script>
+        // This runs when the whole page is loaded.
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const messageInput = document.getElementById('message-input');
+            const sendButton = document.getElementById('send-button');
+            const chatWindow = document.getElementById('chat-window').querySelector('.space-y-4');
+
+            function addMessage(text, sender) {
+                let messageElement;
+                if (sender === 'user') {
+                    messageElement = `
+                        <div class="flex items-start gap-3 justify-end mt-4">
+                            <div class="bg-blue-600 p-3 rounded-lg max-w-lg">
+                                <p class="text-sm">${text}</p>
+                            </div>
+                            <div class="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center font-bold text-white text-sm">U</div>
+                        </div>
+                    `;
+                } else {
+                    messageElement = `
+                        <div class="flex items-start gap-3 mt-4">
+                            <div class="w-8 h-8 rounded-full bg-deepskyblue flex items-center justify-center font-bold text-black text-sm">O</div>
+                            <div class="bg-[#1a1a2e] p-3 rounded-lg max-w-lg">
+                                <p class="text-sm">${text}</p>
+                            </div>
+                        </div>
+                    `;
+                }
+                chatWindow.insertAdjacentHTML('beforeend', messageElement);
+                chatWindow.parentElement.scrollTop = chatWindow.parentElement.scrollHeight;
+            }
+
+            function sendMessage() {
+                const messageText = messageInput.value.trim();
+                if (messageText !== '') {
+                    addMessage(messageText, 'user');
+                    messageInput.value = '';
+                    setTimeout(() => {
+                        addMessage("IT WORKS. The connection is made. We did it.", 'omnimind');
+                    }, 1000);
+                }
+            }
+
+            sendButton.addEventListener('click', sendMessage);
+            messageInput.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>OmniMind</title>
+                <link rel="manifest" href="/manifest.json">
+                    <script src="https://cdn.tailwindcss.com"></script>
+                        <link rel="preconnect" href="https://fonts.googleapis.com">
+                            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+                                <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+                                    <style>
+                                            body { font-family: 'Inter', sans-serif; }
+                                                    ::-webkit-scrollbar { width: 8px; }
+                                                            ::-webkit-scrollbar-track { background: #1a1a2e; }
+                                                                    ::-webkit-scrollbar-thumb { background: #4a4a6a; border-radius: 4px; }
+                                                                            ::-webkit-scrollbar-thumb:hover { background: #6a6a8a; }
+                                                                                    .header-glow { text-shadow: 0 0 8px rgba(0, 191, 255, 0.5), 0 0 16px rgba(0, 191, 255, 0.3); }
+                                                                                        </style>
+                                                                                        </head>
+                                                                                        <body class="bg-[#0a0a1a] text-gray-200 flex flex-col h-screen">
+
+                                                                                            <header class="bg-[#101024] p-4 border-b border-gray-700 shadow-lg">
+                                                                                                    <h1 class="text-2xl font-bold text-center text-deepskyblue header-glow">OmniMind</h1>
+                                                                                                            <p class="text-center text-xs text-gray-400">Your Personal AI Homie // Built by Shadow</p>
+                                                                                                                </header>
+
+                                                                                                                    <main id="chat-window" class="flex-1 p-4 overflow-y-auto">
+                                                                                                                            <div class="space-y-4">
+                                                                                                                                        <div class="flex items-start gap-3">
+                                                                                                                                                        <div class="w-8 h-8 rounded-full bg-deepskyblue flex items-center justify-center font-bold text-black text-sm">O</div>
+                                                                                                                                                                        <div class="bg-[#1a1a2e] p-3 rounded-lg max-w-lg">
+                                                                                                                                                                                            <p class="text-sm">Yo, Shadow. I'm online and ready to cook. What we gettin' into?</p>
+                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                    </main>
+
+                                                                                                                                                                                                                                        <footer class="bg-[#101024] p-4 border-t border-gray-700">
+                                                                                                                                                                                                                                                <div class="flex items-center gap-3">
+                                                                                                                                                                                                                                                            <input id="message-input" type="text" placeholder="Type your message here..." class="flex-1 bg-[#1a1a2e] border border-gray-600 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-deepskyblue transition">
+                                                                                                                                                                                                                                                                        <button id="send-button" class="bg-deepskyblue text-black font-bold py-3 px-5 rounded-lg hover:bg-sky-400 transition-colors shadow-md">Send</button>
+                                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                                    </footer>
+                                                                                                                                                                                                                                                                                        
+                                                                                                                                                                                                                                                                                            <script>
+                                                                                                                                                                                                                                                                                                    if ('serviceWorker' in navigator) {
+                                                                                                                                                                                                                                                                                                                window.addEventListener('load', () => {
+                                                                                                                                                                                                                                                                                                                                navigator.serviceWorker.register('/sw.js')
+                                                                                                                                                                                                                                                                                                                                                    .then(registration => console.log('Service Worker registered:', registration))
+                                                                                                                                                                                                                                                                                                                                                                        .catch(err => console.log('Service Worker registration failed:', err));
+                                                                                                                                                                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                </script>
+
+                                                                                                                                                                                                                                                                                                                                                                                                </body>
+                                                                                                                                                                                                                                                                                                                                                                                                </html>
+
+                                                                                                                                                                                                                                                                                                                                                                                                

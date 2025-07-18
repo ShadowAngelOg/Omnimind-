@@ -1,7 +1,7 @@
 # FILE: app.py
 # LOCATION: Place this in the root directory of your Codespace.
 
-from flask import Flask, render_template_string, jsonify, send_from_directory
+from flask import Flask, render_templates, jsonify, send_from_directory
 
 # Let's make sure Flask is installed. 
 # In your terminal, run: pip install Flask
@@ -13,7 +13,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     # This tells Flask to look inside the 'templates' folder for 'index.html'
-    return render_template('index.html')
+    return render_templates('index.html')
 
         # This route serves the service worker file from the root directory.
         @app.route('/sw.js')
